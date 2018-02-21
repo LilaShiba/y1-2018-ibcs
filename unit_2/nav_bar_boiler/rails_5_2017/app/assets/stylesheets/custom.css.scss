@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
+body {
+    height: 100%;
+    font-family: 'Space Mono', monospace;
+}
+
+h1 {
+    line-height: 1;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: -webkit-xxx-large;
+}
+
+p{
+ 	
+    font-family: 'Space Mono', monospace;
+	
+}
+input,
+textarea,
+select,
+.uneditable-input {
+    border: 1px solid #bbb;
+    width: 50%;
+    margin-bottom: 15px;
+}
+
+.mynav{
+    padding: 2em;
+}
+
+input {
+    height: auto !important;
+}
