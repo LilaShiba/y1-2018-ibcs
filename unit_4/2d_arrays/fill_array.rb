@@ -10,11 +10,7 @@ result.map { |x, y|  }
 puts 'Nested Loop Out Put: '
 for x in odds do 
 	for y in evens do
-		if x  y 
-			result << [x, y]
-		else
-			break
-		end
+		result << [x, y]
 	end
 end
 
