@@ -1,4 +1,3 @@
-
 class Easy(object):
 
 	def __init__(self):

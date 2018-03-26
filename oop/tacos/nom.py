@@ -18,7 +18,7 @@ class Taco:
 		price = str(random.randint(1, 10000))
 		print('your price is ' + price+ ' schmeckles')
 		self.menu.append(payment)
-
+		# Add a feature to have price tied to food ordered
 
 
 class Customer:
