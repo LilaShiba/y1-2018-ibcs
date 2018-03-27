@@ -12,24 +12,36 @@ class Pokemon(object):
 				'shockwave': random.randint(5, 15),
 				'thunderbolt': random.randint(5, 30),
 				'tackle': random.randint(8, 10),
+				'heal': random.randint(-10, -2)
 				}
 		elif self.type == 'fire':
 			attack_dic = {
 				'flame': random.randint(5, 20),
 				'thrower': random.randint(10, 20),
-				'tackle': random.randint(5, 10)
+				'tackle': random.randint(5, 10),
+				'heal': random.randint(-10, -2)
 			}
 		for x in attack_dic:
 			print(x)
 		attack_choice = input('what attack do you pick?')
 		attack_chossen = attack_dic[attack_choice]
 
-		if(self.hp > 1):
+		if(self.hp > 1 and attack_chossen != attack_dic['heal']):
 			enemy.hp -= attack_chossen
+			print("")
 			print("%s did %d Damage to %s"%(self.name, attack_chossen, enemy.name)) #Text-based combat descriptors
 			print("%s has %d HP left"%(enemy.name,enemy.hp)) #Text-based descriptor for the opponent's health
+			print(" ")
 			if(enemy.hp > 1):
+				return enemy.battle(self)
+		elif(self.hp > 1 and attack_chossen == attack_dic['heal']):
+			self.hp -= attack_chossen
+			print("")
+			print("%s healed %d amount "%(self.name, attack_chossen))
+			print("%s has %d HP left"%(self.name,self.hp))
+			print("")
 			return enemy.battle(self)
+
 		else:
 			print("%s wins! (%d HP left)" %(enemy.name, enemy.hp)) #declares the winner of the Battle
 			return enemy, self  #return a tuple (Winner, Loser)
