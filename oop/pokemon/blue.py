@@ -5,7 +5,7 @@ class Pokemon(object):
 		self.name = name
 		self.hp = hp
 		self.type = type
-
+		#how can this be improved and why?
 	def battle(self, enemy):
 		if self.type == 'electric':
 			attack_dic = {
