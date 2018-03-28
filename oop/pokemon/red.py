@@ -1,34 +1,30 @@
 import random
 class Pokemon(object):
-
-	def __init__(self,name,hp, type):
+	
+	def __init__(self,name,hp,type):
 		self.name = name
 		self.hp = hp
-		self.type = type
-		#how can this be improved and why?
-	def battle(self, enemy):
-		# Define type options
-		if self.type == 'electric':
-			attack_dic = {
-				'shockwave': random.randint(5, 15),
-				'thunderbolt': random.randint(5, 30),
-				'tackle': random.randint(8, 10),
-				'heal': random.randint(-10, -2)
-				}
-		elif self.type == 'fire':
-			attack_dic = {
-				'flame': random.randint(5, 20),
-				'thrower': random.randint(10, 20),
-				'tackle': random.randint(5, 10),
-				'heal': random.randint(-10, -2)
+		if type == 'electric':
+			self.type = {
+			'shockwave': random.randint(5, 15),
+			'thunderbolt': random.randint(5, 30),
+			'tackle': random.randint(8, 10),
+			'heal': random.randint(-10, -2)
 			}
-		# Show type options
-		for x in attack_dic:
+		elif type == 'fire':
+			self.type = {
+			'flame': random.randint(5, 20),
+			'thrower': random.randint(10, 20),
+			'tackle': random.randint(5, 10),
+			'heal': random.randint(-10, -2)
+			}
+	
+	def battle(self, enemy):
+		for x in self.type:
 			print(x)
 		attack_choice = input('what attack do you pick?')
-		attack_chossen = attack_dic[attack_choice]
-		# Battle
-		if(self.hp > 1 and attack_chossen != attack_dic['heal']):
+		attack_chossen = self.type[attack_choice]
+		if(self.hp > 1 and attack_chossen != self.type['heal']):
 			enemy.hp -= attack_chossen
 			print("")
 			print("%s did %d Damage to %s"%(self.name, attack_chossen, enemy.name)) #Text-based combat descriptors
@@ -37,7 +33,7 @@ class Pokemon(object):
 			if(enemy.hp > 1):
 				return enemy.battle(self)
 		# Heal Self
-		elif(self.hp > 1 and attack_chossen == attack_dic['heal']):
+		elif(self.hp > 1 and attack_chossen == self.type['heal']):
 			self.hp -= attack_chossen
 			print("")
 			print("%s healed %d amount "%(self.name, attack_chossen))
@@ -53,4 +49,3 @@ class Pokemon(object):
 estelle = Pokemon('estelle', 25, 'electric')
 ben = Pokemon('ben', 25, 'fire')
 Pokemon.battle(estelle,ben)
-
