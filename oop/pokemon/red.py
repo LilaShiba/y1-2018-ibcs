@@ -4,6 +4,7 @@ class Pokemon(object):
 	def __init__(self,name,hp,type):
 		self.name = name
 		self.hp = hp
+		# define each pokemon type
 		if type == 'electric':
 			self.type = {
 			'shockwave': random.randint(5, 15),
@@ -20,10 +21,13 @@ class Pokemon(object):
 			}
 	
 	def battle(self, enemy):
+		# go over attack choices for each instance
 		for x in self.type:
 			print(x)
+			# Pick attack
 		attack_choice = input('what attack do you pick?')
 		attack_chossen = self.type[attack_choice]
+		# Determine if attack or heal to apply points accordingly
 		if(self.hp > 1 and attack_chossen != self.type['heal']):
 			enemy.hp -= attack_chossen
 			print("")
