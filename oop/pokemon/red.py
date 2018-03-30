@@ -19,6 +19,27 @@ class Pokemon(object):
 			'tackle': random.randint(5, 10),
 			'heal': random.randint(-10, -2)
 			}
+		elif type == 'water':
+			self.type = {
+			'hydro pump': random.randint(5, 20),
+			'hydro vortex': random.randint(10, 20),
+			'tackle': random.randint(5, 10),
+			'heal': random.randint(-10, -2)
+			}
+		elif type == 'ghost':
+			self.type = {
+			'shadow ball': random.randint(5, 20),
+			'phantom force': random.randint(10, 20),
+			'tackle': random.randint(5, 10),
+			'heal': random.randint(-10, -2)
+			}
+		elif type == 'psychic':
+			self.type = {
+			'dream eater': random.randint(5, 20),
+			'cosmic power': random.randint(10, 20),
+			'confusion': random.randint(5, 10),
+			'heal': random.randint(-10, -2)
+			}
 	
 	def battle(self, enemy):
 		# go over attack choices for each instance
