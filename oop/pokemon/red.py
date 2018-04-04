@@ -20,7 +20,8 @@ class Pokemon(object):
 			'thrower': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
 			'heal': random.randint(-10, -2),
-			'para': 0
+			'para': 0,
+			'evolve': 1
 			}
 		elif type == 'water':
 			self.type = {
@@ -28,7 +29,8 @@ class Pokemon(object):
 			'hydro vortex': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
 			'heal': random.randint(-10, -2),
-			'para': 0
+			'para': 0,
+			'evolve': 1
 			}
 		elif type == 'ghost':
 			self.type = {
@@ -37,6 +39,7 @@ class Pokemon(object):
 			'tackle': random.randint(5, 10),
 			'heal': random.randint(-10, -2),
 			'para': 0,
+			'evolve': 1
 			}
 		elif type == 'psychic':
 			self.type = {
@@ -44,7 +47,8 @@ class Pokemon(object):
 			'cosmic power': random.randint(10, 20),
 			'confusion': random.randint(5, 10),
 			'heal': random.randint(-10, -2),
-			'para': 0
+			'para': 0,
+			'evolve': 1
 			}
 	
 	def battle(self, enemy):
@@ -63,6 +67,8 @@ class Pokemon(object):
 			# If it works skip enemy turn
 			if x % 2 == 0:
 				print("%s is paralyzed"%(enemy.name))
+				self.hp = self.hp + 5
+				print("%s now has %d"%(self.name, self.hp))
 				if(enemy.hp > 1):
 					return self.battle(enemy)
 			# If it doesn't work, harm self
@@ -81,7 +87,6 @@ class Pokemon(object):
 				return enemy.battle(self)
 			else:
 				print('You do not have enough HP to evolve')
-
 		# Determine if attack or heal to apply points accordingly
 		elif(self.hp > 1 and attack_chossen != self.type['heal']):
 			enemy.hp -= attack_chossen
@@ -103,8 +108,6 @@ class Pokemon(object):
 			print("%s has %d HP left"%(self.name,self.hp))
 			print("")
 			return enemy.battle(self)
-
-
 		# Win Statement
 		else:
 			print("%s wins! (%d HP left)" %(enemy.name, enemy.hp)) #declares the winner of the Battle
