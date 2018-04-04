@@ -4,50 +4,72 @@ class Pokemon(object):
 	def __init__(self,name,hp,type):
 		self.name = name
 		self.hp = hp
-		# define each pokemon type
+		# define each pokemon type & assign hash table
 		if type == 'electric':
 			self.type = {
 			'shockwave': random.randint(5, 15),
 			'thunderbolt': random.randint(5, 30),
 			'tackle': random.randint(8, 10),
-			'heal': random.randint(-10, -2)
+			'heal': random.randint(-10, -2),
+			'para': 0
 			}
 		elif type == 'fire':
 			self.type = {
 			'flame': random.randint(5, 20),
 			'thrower': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
-			'heal': random.randint(-10, -2)
+			'heal': random.randint(-10, -2),
+			'para': 0
 			}
 		elif type == 'water':
 			self.type = {
 			'hydro pump': random.randint(5, 20),
 			'hydro vortex': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
-			'heal': random.randint(-10, -2)
+			'heal': random.randint(-10, -2),
+			'para': 0
 			}
 		elif type == 'ghost':
 			self.type = {
 			'shadow ball': random.randint(5, 20),
 			'phantom force': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
-			'heal': random.randint(-10, -2)
+			'heal': random.randint(-10, -2),
+			'para': 0,
 			}
 		elif type == 'psychic':
 			self.type = {
 			'dream eater': random.randint(5, 20),
 			'cosmic power': random.randint(10, 20),
 			'confusion': random.randint(5, 10),
-			'heal': random.randint(-10, -2)
+			'heal': random.randint(-10, -2),
+			'para': 0
 			}
 	
 	def battle(self, enemy):
 		# go over attack choices for each instance
+		print("It is %s's turn to attack"%(self.name))
 		for x in self.type:
 			print(x)
-			# Pick attack
+		# Pick attack
 		attack_choice = input('what attack do you pick?')
 		attack_chossen = self.type[attack_choice]
+		
+		# Paralyze
+		if(self.hp > 1 and attack_chossen == self.type['para']):
+			x = random.randint(0,10)
+			if x % 2 == 0:
+				print("%s is paralyzed"%(enemy.name))
+				if(enemy.hp > 1):
+					return self.battle(enemy)
+					
+
+			else:
+				print("It didn't work")
+				self.hp = self.hp - 2
+				print("You hurt your self by 2 hp. You now have %s"%(self.hp))
+				return enemy.battle(self)
+
 		# Determine if attack or heal to apply points accordingly
 		if(self.hp > 1 and attack_chossen != self.type['heal']):
 			enemy.hp -= attack_chossen
@@ -57,6 +79,12 @@ class Pokemon(object):
 			print(" ")
 			if(enemy.hp > 1):
 				return enemy.battle(self)
+		
+
+		# Heal Limit
+		elif(self.hp >= 20 and attack_chossen == self.type['heal']):
+			print('You are already healed!')
+			return enemy.battle(self)
 		# Heal Self
 		elif(self.hp > 1 and attack_chossen == self.type['heal']):
 			self.hp -= attack_chossen
@@ -65,6 +93,13 @@ class Pokemon(object):
 			print("%s has %d HP left"%(self.name,self.hp))
 			print("")
 			return enemy.battle(self)
+
+		# evolve
+		#elif(self.hp > 1 and attack_choice == 'evolve'):
+		#	ev1 = {'laser': random.randint(15, 30)}
+		#	self.type = self.type.update(ev1)
+		#	return enemy.battle(self)
+
 		# Win Statement
 		else:
 			print("%s wins! (%d HP left)" %(enemy.name, enemy.hp)) #declares the winner of the Battle
