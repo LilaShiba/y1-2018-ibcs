@@ -7,11 +7,28 @@ OOP Three Pillars
 
 A module is just a file that contains python code
 
+
+
+
 Class: A blueprint for an instance
+
 Instance: A constructed object of the class
+
 Type: Indicates the class the instace belongs to
+
 Attribute: Any object value
+
 Method: A callable attribute
+
+
+
+
+
+
+
+
+
+
 
 >>> var = 5
 >>> dir(var)

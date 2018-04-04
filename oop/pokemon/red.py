@@ -11,7 +11,8 @@ class Pokemon(object):
 			'thunderbolt': random.randint(5, 30),
 			'tackle': random.randint(8, 10),
 			'heal': random.randint(-10, -2),
-			'para': 0
+			'para': 0,
+			'evolve': 1
 			}
 		elif type == 'fire':
 			self.type = {
@@ -58,20 +59,31 @@ class Pokemon(object):
 		# Paralyze
 		if(self.hp > 1 and attack_chossen == self.type['para']):
 			x = random.randint(0,10)
+			# 50/50 chance of working
+			# If it works skip enemy turn
 			if x % 2 == 0:
 				print("%s is paralyzed"%(enemy.name))
 				if(enemy.hp > 1):
 					return self.battle(enemy)
-					
-
+			# If it doesn't work, harm self
 			else:
 				print("It didn't work")
 				self.hp = self.hp - 2
 				print("You hurt your self by 2 hp. You now have %s"%(self.hp))
 				return enemy.battle(self)
+		# Evolve Pokemon!
+		elif(self.hp > 1 and attack_choice == 'evolve'):
+			if(self.hp > 15):
+				self.type.update({'laser': random.randint(15, 30)})
+				print("%s is evovling!"%(self.name))
+				enemy.hp = enemy.hp + 10
+				print("%s toughend their defense!"%(enemy.name))
+				return enemy.battle(self)
+			else:
+				print('You do not have enough HP to evolve')
 
 		# Determine if attack or heal to apply points accordingly
-		if(self.hp > 1 and attack_chossen != self.type['heal']):
+		elif(self.hp > 1 and attack_chossen != self.type['heal']):
 			enemy.hp -= attack_chossen
 			print("")
 			print("%s did %d Damage to %s"%(self.name, attack_chossen, enemy.name)) #Text-based combat descriptors
@@ -79,8 +91,6 @@ class Pokemon(object):
 			print(" ")
 			if(enemy.hp > 1):
 				return enemy.battle(self)
-		
-
 		# Heal Limit
 		elif(self.hp >= 20 and attack_chossen == self.type['heal']):
 			print('You are already healed!')
@@ -94,11 +104,6 @@ class Pokemon(object):
 			print("")
 			return enemy.battle(self)
 
-		# evolve
-		#elif(self.hp > 1 and attack_choice == 'evolve'):
-		#	ev1 = {'laser': random.randint(15, 30)}
-		#	self.type = self.type.update(ev1)
-		#	return enemy.battle(self)
 
 		# Win Statement
 		else:
