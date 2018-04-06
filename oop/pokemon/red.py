@@ -7,25 +7,25 @@ class Pokemon(object):
 		# define each pokemon type & assign hash table
 		if type == 'electric':
 			self.type = {
-			'shockwave': random.randint(5, 15),
-			'thunderbolt': random.randint(5, 30),
-			'tackle': random.randint(8, 10),
+			'1 tackle': random.randint(5, 10),
+			'2 shockwave': random.randint(5, 10),
+			'3 thunderbolt': random.randint(5, 30),
 			'heal': random.randint(-10, -2),
 			'para': 0,
 			'evolve': 1
 			}
 		elif type == 'fire':
 			self.type = {
-			'flame': random.randint(5, 20),
-			'thrower': random.randint(10, 20),
-			'tackle': random.randint(5, 10),
+			'1 tackle': random.randint(5, 10),
+			'2 flame': random.randint(5, 20),
+			'3 thrower': random.randint(10, 20),
 			'heal': random.randint(-10, -2),
 			'para': 0,
 			'evolve': 1
 			}
 		elif type == 'water':
 			self.type = {
-			'hydro pump': random.randint(5, 20),
+			'2lvl hydro pump': random.randint(5, 20),
 			'hydro vortex': random.randint(10, 20),
 			'tackle': random.randint(5, 10),
 			'heal': random.randint(-10, -2),
@@ -89,6 +89,15 @@ class Pokemon(object):
 				print('You do not have enough HP to evolve')
 		# Determine if attack or heal to apply points accordingly
 		elif(self.hp > 1 and attack_chossen != self.type['heal']):
+			for x, y in self.type.items():
+				#update value
+				# speed example
+				if(x[0] == '1'):
+					self.type.update({x: random.randint(5,10)})
+				elif(x[0] =='2'):
+					self.type.update({x: random.randint(8,15)})
+				elif(x[0] =='3'):
+					self.type.update({x: random.randint(10,20)})
 			enemy.hp -= attack_chossen
 			print("")
 			print("%s did %d Damage to %s"%(self.name, attack_chossen, enemy.name)) #Text-based combat descriptors
