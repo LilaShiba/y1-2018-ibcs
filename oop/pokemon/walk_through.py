@@ -8,7 +8,8 @@ class Pokemon(object):
 		if type == 'electric':
 			self.type = {
 				'shock': random.randint(10,15),
-				'thunderbolt': random.randint(15,20)
+				'thunderbolt': random.randint(15,20),
+				'heal': random.randint(-5, -1)
 
 			}
 		elif type == 'fire':
