@@ -27,11 +27,13 @@ class Parsey(object):
 
 # Create objects
 jobs = Parsey('https://www.dwight.edu/about/employment-opportunities', '#fsEl_5489 > div > ul')
-nytimes = Parsey('https://www.nytimes.com/', '#topnews-100000005840370 > h2 > a')
-wpost = Parsey('https://www.washingtonpost.com/', '#fKa8822e4tpJOq > div > div > div.headline.small.normal-style.text-align-inherit')
+nytimes = Parsey('https://www.nytimes.com/', '#topnews-100000005840723 > h2 > a')
+wpost = Parsey('https://www.washingtonpost.com', '#f0MlwiA4gKaLOq > div > div > div.headline.small.normal-style.text-align-inherit > a')
+
 # Call
 Parsey.get_url(jobs)
 Parsey.get_url(nytimes)
 Parsey.get_url(wpost)
+
 
 
