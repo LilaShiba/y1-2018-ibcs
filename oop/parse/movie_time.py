@@ -23,5 +23,5 @@ class Movies(object):
 
 
 
-alamo = Movies('https://drafthouse.com/nyc/calendar/downtown-brooklyn', '')
+alamo = Movies('https://drafthouse.com/nyc/calendar/downtown-brooklyn', 'h1')
 Movies.get_times(alamo)
