@@ -6,7 +6,8 @@ class Planets(object):
 		self.name = name
 		self.grade = grade
 		self.book_history = book_history
-		self.types = {}
+		# Used for orbit later. Tracks friends with same books
+		self.types = { }
 
 	def show_books(self):
 		for x in self.book_history:
@@ -18,11 +19,17 @@ class Planets(object):
 		shared_books = [element for element in self.book_history if element in friend.book_history]
 		shared_books = str(shared_books)[1:-1]
 		print("%s and %s have %s in common"%(self.name, friend.name, shared_books))
+		# build out for multi use of friends
+		a = ''
+		if (shared_books != a):
+			self.types.update({friend.name: shared_books})
+			print(self.types)
 
 	def add_book(self):
 		add_what_book = input('type what book would you like to add')
 		# what data structure for book_history?
-		# right now it's an array
+		# right now it's an array which get's placed as a
+		# hash table (friend: books) in self.types
 		self.book_history.append(add_what_book)
 
 	def remove_book(self):
@@ -34,13 +41,21 @@ class Planets(object):
 			show_books(self)
 			remove_book(self)
 
+	def find_all_friends(self, friend_hash):
+		pass
+
+	def see_matches(self, friend_hash):
+		for x in self.types:
+			print(x)
+
+
 meow = Planets('Estelle', 1000, ['woof', 'for whom the dog borks', 'where are my keys'])
 woof = Planets('Ben', 1000, ['hay hay', 'where is my carrot', 'woof'] )
 bork = Planets('Catto', 10000, ['meow', 'meow vs. bork', 'where is my carrort'])
 
 all_users = [meow, woof, bork]
 while True:
-	print(" 1 show books, 2 add books, 3 remove books, 4, find friends, 5 exit")
+	print(" 1 show books, 2 add books, 3 remove books, 4, find friends, 5 find all friends, 6 see all friends, 7 exit")
 	print("")
 	userChoice = int(input())
 	if userChoice is 1:
@@ -51,6 +66,9 @@ while True:
 		meow.remove_book()
 	elif userChoice is 4:
 		Planets.organize_books(meow, bork)
+	elif userChoice is 5:
+		Planets.find_all_friends(all_users)
+	elif userChoice is 6:
+		Planets.see_matches(meow, all_users)
 	else:
 		exit()
-		
