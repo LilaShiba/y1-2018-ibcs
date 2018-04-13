@@ -1,6 +1,11 @@
 from pythonds.basic.stack import Stack
 
 s=Stack()
+# Methods
+# push()
+# pop()
+# isEmpty()
+# peek()
 
 print(s.isEmpty())
 s.push(4)
