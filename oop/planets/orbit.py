@@ -42,7 +42,10 @@ class Planets(object):
 			remove_book(self)
 
 	def find_all_friends(self, friend_hash):
-		pass
+		for x in self.types:
+			for y in friend_hash:
+				if x == y:
+					print(x)
 
 	def see_matches(self):
 		for x in self.types:
@@ -56,7 +59,7 @@ meow = Planets('Estelle', 1000, ['woof', 'for whom the dog borks', 'where are my
 woof = Planets('Ben', 1000, ['hay hay', 'where is my carrot', 'woof'] )
 bork = Planets('Catto', 10000, ['meow', 'meow vs. bork', 'where is my carrort'])
 
-all_users = [meow, woof, bork]
+all_users = {'Catto': ['meow'], 'Ben': ['meow']}
 while True:
 	print(" 1 show books, 2 add books, 3 remove books, 4, find friends, 5 find all friends, 6 see all friends, 7 exit")
 	print("")
@@ -70,8 +73,8 @@ while True:
 	elif userChoice is 4:
 		Planets.organize_books(meow, bork)
 	elif userChoice is 5:
-		Planets.find_all_friends(all_users)
+		meow.find_all_friends(all_users)
 	elif userChoice is 6:
-		Planets.see_matches(meow)
+		meow.see_matches()
 	else:
 		exit()
