@@ -44,9 +44,12 @@ class Planets(object):
 	def find_all_friends(self, friend_hash):
 		pass
 
-	def see_matches(self, friend_hash):
+	def see_matches(self):
 		for x in self.types:
 			print(x)
+			my_friends = x
+
+		print("%s is friends with %s"%(self.name, my_friends))
 
 
 meow = Planets('Estelle', 1000, ['woof', 'for whom the dog borks', 'where are my keys'])
@@ -69,6 +72,6 @@ while True:
 	elif userChoice is 5:
 		Planets.find_all_friends(all_users)
 	elif userChoice is 6:
-		Planets.see_matches(meow, all_users)
+		Planets.see_matches(meow)
 	else:
 		exit()
