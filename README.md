@@ -1,20 +1,34 @@
-Unit Zero: Ruby Warrior & Logic Gates/Truth Tables
-	Project 1: Build Computer
+# Hello and welcome to year one IBCS!
 
-Unit One: Abstraction & Computer Structure
-	Project 2: Build program to solve everyday problems
+Here is your user documentation. While setting up your
+dev environment, use each other as resources. There is a
+wide range of skill sets, which is a plus.
 
-Project: Rails Portfolio & Webscience Basics
-	Project 3: Build portfolio
+## Sign up for and download slack
+https://slack.com/signin
+our team name is ibcs2018
 
-Unit Three: Abstract Data Types 101
-	Project 4: Create midterm
+## Download sublime text 3:
+https://www.sublimetext.com/3
+To check out plugins visit the following two sites
+https://packagecontrol.io/
+https://www.sitepoint.com/10-essential-sublime-text-plugins-full-stack-developer/
+ 
 
-Midterm
+## Download homebrew:
+https://brew.sh/
 
-Unit Four: Abstract Data Types 202
-	Project 5: 
+## Install Oh-my-zsh & make your terminal glow:
+https://github.com/robbyrussell/oh-my-zsh
+enable st . as a hotkey for sublime
+Here is the documentation 
+https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sublime
 
-Unit Five: IA & Lean Startup
+## Install python3 with brew
+see slack to see how!
 
-Year Exam
+## Make sure ruby is up todate
+see slack to see how :\
+
+## Create a github account
+https://github.com/
