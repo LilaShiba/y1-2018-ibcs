@@ -6,7 +6,7 @@ wide range of skill sets, which is a plus.
 
 ## Sign up for and download slack
 https://slack.com/signin
-our team name is ibcs2018
+our team name is ibcs2017
 
 ## Download sublime text 3:
 https://www.sublimetext.com/3
